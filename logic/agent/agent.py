@@ -10,6 +10,7 @@ class Agent:
 
     def __init__(self, keyboard, grid, action_types):
         self.keyboard = keyboard
+        self.buttons = keyboard.buttons
         self.grid = grid
         self.action_types = action_types
         self.actions = []

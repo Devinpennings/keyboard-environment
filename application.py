@@ -22,6 +22,6 @@ def bind(**kwargs):
 
 
 grid = Grid(config.KEYBOARD_WIDTH, config.KEYBOARD_HEIGHT, config.COLUMN_COUNT, config.ROW_COUNT)
-keyboard = Keyboard(config.SYMBOLS, config.BUTTON_WIDTH, config.BUTTON_HEIGHT)
+keyboard = Keyboard(config.SYMBOLS, config.BUTTON_WIDTH, config.BUTTON_HEIGHT, config.KEYBOARD_WIDTH, config.KEYBOARD_HEIGHT)
 agent = Agent(keyboard, grid, config.ACTION_TYPES)
 cli = CLI(config.CLI_HEIGHT) if config.ENABLE_CLI else None

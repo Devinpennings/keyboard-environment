@@ -39,16 +39,18 @@ class Keyboard(StackLayout):
 
     @mainthread
     def set_button_pos(self, button, widget):
-        button.rectangle.pos_x = widget.x
-        button.rectangle.pos_y = widget.y
         button.widget = widget
+        widget.bind(on_click=button.click)
 
     def draw_grid(self):
         for cell in application.grid.cells:
 
+            # Canvas draw workaround
+            max_y = application.grid.height - cell.rectangle.height
+
             def click_cell(cell_to_draw, duration):
                 rectangle = Rectangle(pos=(cell_to_draw.rectangle.pos_x,
-                                           cell_to_draw.rectangle.pos_y + (application.cli.height if application.cli else 0)),
+                                           max_y - cell_to_draw.rectangle.pos_y + (application.cli.height if application.cli else 0)),
                                       size=(cell_to_draw.rectangle.width, cell_to_draw.rectangle.height))
                 with self.canvas:
                     Color(0, 1, 0, 0.5)
@@ -57,10 +59,6 @@ class Keyboard(StackLayout):
 
                 def remove(obj):
                     self.canvas.remove(rectangle)
-
-                button = application.keyboard.get_button(*cell_to_draw.rectangle.center())
-                if button:
-                    button.click(duration)
 
                 Clock.schedule_once(remove, duration)
 

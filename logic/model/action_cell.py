@@ -1,5 +1,7 @@
 from events import Events
 
+import application
+
 
 class ActionCell:
 
@@ -18,5 +20,8 @@ class ActionCell:
             self.event_dict[key] += value
 
     def click(self, duration):
+        button = application.keyboard.get_button(*self.rectangle.center())
+        if button:
+            button.click(duration)
         self.events.on_click(self, duration)
         return f'Clicked cell {self.__str__()}'

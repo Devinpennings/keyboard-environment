@@ -27,6 +27,9 @@ class CLI:
         except ValueError:
             return 'Invalid argument'
 
+    def buttons(self):
+        return application.agent.buttons
+
     def reset(self):
         application.agent.reset()
         return 'reset'
