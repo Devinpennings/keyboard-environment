@@ -1,10 +1,8 @@
 from events import Events
 
-import config
-from logic.agent.agent import Agent
-from logic.model import Grid
-from logic.model import Keyboard
-from logic.model import CLI
+from . import config
+from .logic.agent import Agent
+from .logic.model import *
 
 __events__ = Events()
 __event_dict__ = {

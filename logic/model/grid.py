@@ -1,5 +1,5 @@
-from logic.model.action_cell import ActionCell
-from logic.model import Rectangle
+from .rectangle import Rectangle
+from .action_cell import ActionCell
 
 
 class Grid:

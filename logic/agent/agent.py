@@ -1,9 +1,9 @@
 from threading import Thread
 from time import sleep
 
-import application
-from logic.agent import Action
-from logic.agent.result import Result
+from ... import application
+from .action import Action
+from .result import Result
 
 
 class Agent:

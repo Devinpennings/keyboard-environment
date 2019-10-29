@@ -1,7 +1,7 @@
 import kivy
 from kivy.app import App
 
-from ui.widgets import MainScreen
+from ui import MainScreen
 
 kivy.require('1.11.1')
 

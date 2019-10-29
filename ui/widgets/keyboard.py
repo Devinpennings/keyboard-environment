@@ -50,7 +50,8 @@ class Keyboard(StackLayout):
 
             def click_cell(cell_to_draw, duration):
                 rectangle = Rectangle(pos=(cell_to_draw.rectangle.pos_x,
-                                           max_y - cell_to_draw.rectangle.pos_y + (application.cli.height if application.cli else 0)),
+                                           max_y - cell_to_draw.rectangle.pos_y + (
+                                               application.cli.height if application.cli else 0)),
                                       size=(cell_to_draw.rectangle.width, cell_to_draw.rectangle.height))
                 with self.canvas:
                     Color(0, 1, 0, 0.5)

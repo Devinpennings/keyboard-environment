@@ -1,5 +1,5 @@
-from application_mode import ApplicationMode
-from logic.agent.action_type import ActionType
+from . import application_mode
+from .logic.agent import ActionType
 
 SYMBOLS = ['a', 'b', 'c', '@']
 
@@ -17,5 +17,4 @@ ACTION_TYPES = [ActionType.CLICK]
 ENABLE_CLI = True
 CLI_HEIGHT = 128
 
-APPLICATION_MODE = ApplicationMode.CONSOLE
-
+APPLICATION_MODE = application_mode.ApplicationMode.API

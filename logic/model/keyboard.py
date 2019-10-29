@@ -1,5 +1,6 @@
-import application
-from logic.model import KeyboardButton, Rectangle
+from ... import application
+from .keyboard_button import KeyboardButton
+from .rectangle import Rectangle
 
 
 class Keyboard:

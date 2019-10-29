@@ -1,4 +1,4 @@
-import application
+from ... import application
 
 
 class CLI:

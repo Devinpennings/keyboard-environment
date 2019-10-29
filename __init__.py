@@ -1,1 +1,1 @@
-import application
+from .logic import *

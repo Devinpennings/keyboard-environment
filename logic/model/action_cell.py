@@ -1,7 +1,6 @@
 from events import Events
 
-import application
-
+from ... import application
 
 class ActionCell:
 

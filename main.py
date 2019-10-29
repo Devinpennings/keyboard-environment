@@ -1,5 +1,3 @@
-from cmd import Cmd
-
 import application
 import config
 from application_mode import ApplicationMode

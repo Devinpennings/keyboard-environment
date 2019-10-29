@@ -1,1 +1,2 @@
-from logic.agent.action import Action
+from .agent import Agent
+from .action_type import ActionType
