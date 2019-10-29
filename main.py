@@ -21,7 +21,9 @@ def start_console():
         parsed = raw.split(' ')
         command = parsed[0]
         args = parsed[1:]
-        print(application.cli.execute(command, *args))
+        result = application.cli.execute(command, *args)
+        if result:
+            print(result)
 
 
 def start_graphical():

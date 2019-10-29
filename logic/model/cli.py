@@ -32,14 +32,20 @@ class CLI:
 
     def reset(self):
         application.agent.reset()
-        return 'reset'
 
     def state(self):
         return application.agent.state()
+
+    def exit(self):
+        quit()
 
     def execute(self, command, *args):
         try:
             function = getattr(self, command)
         except AttributeError:
             return "Command not recognized"
-        return str(function(*args))
+        try:
+            result = function(*args)
+            return str(result) if result else None
+        except TypeError:
+            return "Missing argument"
