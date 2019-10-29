@@ -4,7 +4,7 @@ from kivy.graphics.vertex_instructions import Line, Rectangle
 from kivy.uix.button import Button
 from kivy.uix.stacklayout import StackLayout
 
-import application
+from ... import application
 
 
 class Keyboard(StackLayout):

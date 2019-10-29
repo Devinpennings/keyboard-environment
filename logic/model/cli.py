@@ -34,6 +34,9 @@ class CLI:
         application.agent.reset()
         return 'reset'
 
+    def state(self):
+        return application.agent.state()
+
     def execute(self, command, *args):
         try:
             function = getattr(self, command)

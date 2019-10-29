@@ -15,6 +15,7 @@ class Agent:
         self.action_types = action_types
         self.actions = []
         self.action_dict = {}
+        self.states = {}
 
         self.__init_actions()
 
@@ -30,6 +31,18 @@ class Agent:
     def reset(self):
         application.reset()
 
+    def __next_state__(self):
+        max_s = -1
+        for k, v in self.states.values():
+            if v > max_s:
+                max_s = v
+        return max_s + 1
+
+    def state(self):
+        if self.keyboard not in self.states:
+            self.states[self.keyboard] = self.__next_state__()
+        return self.states[self.keyboard]
+
     def execute(self, action_id):
         def execute_wait(action):
             action.execute()
@@ -38,7 +51,7 @@ class Agent:
         try:
             thread = Thread(target=execute_wait, args=(self.action_dict[action_id], ))
             thread.start()
-            return Result(self.keyboard.value, 0, bool(self.keyboard.value))
+            return Result(self.keyboard.value, self.state(), bool(self.keyboard.value))
 
         except KeyError:
             return f'Action {action_id} does not exist'

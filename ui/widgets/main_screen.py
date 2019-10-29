@@ -2,9 +2,9 @@ from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
 
-import application
-from ui.widgets.cli import CLI
-from ui.widgets.keyboard import Keyboard
+from ... import application
+from .cli import CLI
+from .keyboard import Keyboard
 
 TEXT_INPUT_HEIGHT = 64
 CLI_HEIGHT = 128

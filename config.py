@@ -17,4 +17,4 @@ ACTION_TYPES = [ActionType.CLICK]
 ENABLE_CLI = True
 CLI_HEIGHT = 128
 
-APPLICATION_MODE = application_mode.ApplicationMode.API
+APPLICATION_MODE = application_mode.ApplicationMode.GRAPHIC

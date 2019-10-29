@@ -1,3 +1,5 @@
+import sys
+
 from . import application
 from . import config
 from .application_mode import ApplicationMode
@@ -24,7 +26,7 @@ def start_console():
 
 def start_graphical():
 
-    if isnotebook():
+    if is_notebook():
         print('Cannot start graphic mode from notebook.')
         return
 
@@ -39,19 +41,19 @@ def start(mode=None):
 
     print(f'Starting with mode {mode}...')
 
-    if mode == ApplicationMode.API.value:
+    if mode == ApplicationMode.API.value or mode == ApplicationMode.API:
         start_api()
-    elif mode == ApplicationMode.CONSOLE.value:
+    elif mode == ApplicationMode.CONSOLE.value or mode == ApplicationMode.CONSOLE:
         start_console()
-    elif mode == ApplicationMode.GRAPHIC.value:
+    elif mode == ApplicationMode.GRAPHIC.value or mode == ApplicationMode.GRAPHIC:
         start_graphical()
-    elif mode == ApplicationMode.DEMO.value:
+    elif mode == ApplicationMode.DEMO.value or mode == ApplicationMode.DEMO:
         start_api_demo()
     else:
         pass
 
 
-def isnotebook():
+def is_notebook():
     try:
         shell = get_ipython().__class__.__name__
         if shell == 'ZMQInteractiveShell':
@@ -65,4 +67,4 @@ def isnotebook():
 
 
 if __name__ == '__main__':
-    start()
+    start(sys.argv[1] if len(sys.argv) > 1 else None)

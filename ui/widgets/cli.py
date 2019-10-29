@@ -2,7 +2,7 @@ from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
 
-import application
+from ... import application
 
 
 class CLI(BoxLayout):
