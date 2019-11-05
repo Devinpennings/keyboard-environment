@@ -27,11 +27,6 @@ def start_console():
 
 
 def start_graphical():
-
-    if is_notebook():
-        print('Cannot start graphic mode from notebook.')
-        return
-
     from .ui.interface import Interface
     Interface().run()
 
