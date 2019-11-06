@@ -37,6 +37,7 @@ class Keyboard:
             c_count += 1
             if c_count == columns:
                 r_count += 1
+                c_count = 0
 
             def on_button_click(obj, duration):
                 self.value += obj.symbol

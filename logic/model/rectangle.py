@@ -14,3 +14,6 @@ class Rectangle:
             self.pos_x + self.width / 2,
             self.pos_y + self.height / 2,
         )
+
+    def __str__(self):
+        return f'rectangle: ({self.pos_x}, {self.pos_y}) | w: {self.width} h: {self.height}'
