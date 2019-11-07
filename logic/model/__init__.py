@@ -1,3 +1,4 @@
+from .text import Text
 from .grid import Grid
 from .keyboard import Keyboard
 from .cli import CLI

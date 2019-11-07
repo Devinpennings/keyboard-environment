@@ -1,25 +1,52 @@
+import json
+import sys
+import os
+
 from events import Events
 
 from . import config
 from .logic.agent import Agent
 from .logic.model import *
 
-__events__ = Events()
-__event_dict__ = {
-    'on_reset': __events__.on_reset
+__events = Events()
+__event_dict = {
+    'on_keyboard_change': __events.on_keyboard_change,
 }
-
-
-def reset():
-    __events__.on_reset(None)
 
 
 def bind(**kwargs):
     for key, value in kwargs.items():
-        __event_dict__[key] += value
+        __event_dict[key] += value
 
 
+root_path = os.path.dirname(os.path.abspath(__file__))
 grid = Grid(config.KEYBOARD_WIDTH, config.KEYBOARD_HEIGHT, config.COLUMN_COUNT, config.ROW_COUNT)
-keyboard = Keyboard(config.SYMBOLS, config.BUTTON_WIDTH, config.BUTTON_HEIGHT, config.KEYBOARD_WIDTH, config.KEYBOARD_HEIGHT)
+
+keyboard = None
+
+
+def init_keyboard():
+    global keyboard
+    if len(sys.argv) > 2:
+        _file = open(f'{root_path}/keyboards/{sys.argv[2]}.json')
+        _template = json.load(_file)
+        keyboard = Keyboard.from_template(_template)
+    else:
+        keyboard = Keyboard.from_symbols(config.KEYBOARD_WIDTH,
+                                         config.KEYBOARD_HEIGHT,
+                                         config.BUTTON_WIDTH,
+                                         config.BUTTON_HEIGHT,
+                                         config.SYMBOLS)
+
+
+init_keyboard()
+
 agent = Agent(keyboard, grid, config.ACTION_TYPES)
 cli = CLI(config.CLI_HEIGHT) if config.ENABLE_CLI else None
+text = Text()
+
+
+def set_keyboard(new):
+    global keyboard
+    keyboard = new
+    __events.on_keyboard_change()

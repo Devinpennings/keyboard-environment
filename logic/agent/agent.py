@@ -29,7 +29,7 @@ class Agent:
                 identifier += 1
 
     def reset(self):
-        application.reset()
+        application.text.reset()
 
     def __next_state__(self):
         max_s = -1
@@ -46,12 +46,12 @@ class Agent:
     def execute(self, action_id):
         def execute_wait(action):
             action.execute()
-            sleep(action.duration)
+            sleep(action.action_type.duration)
 
         try:
             thread = Thread(target=execute_wait, args=(self.action_dict[action_id], ))
             thread.start()
-            return Result(self.keyboard.value, self.state(), bool(self.keyboard.value))
+            return Result(application.text.value, self.state(), bool(application.text.value))
 
         except KeyError:
             return f'Action {action_id} does not exist'

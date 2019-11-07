@@ -1,18 +1,21 @@
 from . import application_mode
-from .logic.agent import ActionType
+from .logic.agent import ActionTypes
 
-SYMBOLS = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', 'a','s', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '"','enter' ,'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/']
+SYMBOLS = [
+    'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';',
+    '"', 'enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'
+]
 
 COLUMN_COUNT = 12
 ROW_COUNT = 3
 
-KEYBOARD_WIDTH = 600
-KEYBOARD_HEIGHT = 150
+KEYBOARD_WIDTH = 760
+KEYBOARD_HEIGHT = 200
 
 BUTTON_WIDTH = 50
 BUTTON_HEIGHT = 50
 
-ACTION_TYPES = [ActionType.CLICK]
+ACTION_TYPES = [ActionTypes.CLICK, ActionTypes.HOLD]
 
 ENABLE_CLI = True
 CLI_HEIGHT = 128

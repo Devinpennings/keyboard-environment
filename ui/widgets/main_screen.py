@@ -30,15 +30,13 @@ class MainScreen(BoxLayout):
         text_input.height = TEXT_INPUT_HEIGHT
         text_input.size_hint = (1, None)
 
-        def on_reset(obj):
+        def text_change(value):
+            text_input.text = value
+        application.text.bind(on_change=text_change)
+
+        def text_reset():
             text_input.text = ""
-
-        application.bind(on_reset=on_reset)
-
-        def add_text(obj, value):
-            text_input.insert_text(value)
-
-        keyboard.bind(on_input=add_text)
+        application.text.bind(on_reset=text_reset)
 
         self.add_widget(text_input)
         self.add_widget(keyboard)

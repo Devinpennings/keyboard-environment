@@ -1,2 +1,2 @@
 from .agent import Agent
-from .action_type import ActionType
+from .action_types import ActionTypes

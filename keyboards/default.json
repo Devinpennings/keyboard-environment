@@ -1,0 +1,130 @@
+{
+  "name": "default",
+  "width": 780,
+  "height": 200,
+  "defaults": {
+    "button_width": 50,
+    "button_height": 50,
+    "handlers": {
+      "on_click": {
+        "name": "ValueAppendHandler"
+      }
+    }
+  },
+  "buttons": [
+
+    {
+      "value": "tab",
+      "row": 0,
+      "width": 80
+    },
+    {
+      "value": "q",
+      "row": 0
+    },
+    {
+      "value": "w",
+      "row": 0
+    },
+    {
+      "value": "e",
+      "row": 0
+    },
+    {
+      "value": "r",
+      "row": 0
+    },
+    {
+      "value": "t",
+      "row": 0
+    },
+    {
+      "value": "y",
+      "row": 0
+    },
+    {
+      "value": "u",
+      "row": 0
+    },
+    {
+      "value": "i",
+      "row": 0
+    },
+    {
+      "value": "o",
+      "row": 0
+    },
+    {
+      "value": "p",
+      "row": 0
+    },
+    {
+      "value": "[",
+      "row": 0
+    },
+    {
+      "value": "]",
+      "row": 0
+    },
+    {
+      "value": "\\",
+      "row": 0,
+      "width": 80
+    },
+
+    {
+      "value": "caps lock",
+      "row": 1,
+      "width": 85
+    },
+    {
+      "value": "a",
+      "row": 1
+    },
+    {
+      "value": "s",
+      "row": 1
+    },
+    {
+      "value": "d",
+      "row": 1
+    },
+    {
+      "value": "f",
+      "row": 1
+    },
+    {
+      "value": "g",
+      "row": 1
+    },
+    {
+      "value": "h",
+      "row": 1
+    },
+    {
+      "value": "j",
+      "row": 1
+    },
+    {
+      "value": "k",
+      "row": 1
+    },
+    {
+      "value": "l",
+      "row": 1
+    },
+    {
+      "value": ";",
+      "row": 1
+    },
+    {
+      "value": "'",
+      "row": 1
+    },
+    {
+      "value": "enter",
+      "row": 1,
+      "width": 130
+    }
+  ]
+}

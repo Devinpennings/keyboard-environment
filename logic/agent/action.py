@@ -4,7 +4,6 @@ class Action:
         self.identifier = identifier
         self.location = location
         self.action_type = action_type
-        self.duration = action_type.value
 
     def __str__(self):
         return f'{self.identifier} | ' \
@@ -12,4 +11,4 @@ class Action:
                f'{self.action_type}'
 
     def execute(self):
-        return self.location.click(self.duration)
+        return self.location.execute(self.action_type)
