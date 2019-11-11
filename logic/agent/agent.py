@@ -8,14 +8,13 @@ from .result import Result
 
 class Agent:
 
-    def __init__(self, keyboard, grid, action_types):
-        self.keyboard = keyboard
-        self.buttons = keyboard.buttons
+    def __init__(self, grid, action_types):
         self.grid = grid
         self.action_types = action_types
         self.actions = []
         self.action_dict = {}
         self.states = {}
+        self.state()
 
         self.__init_actions()
 
@@ -29,19 +28,20 @@ class Agent:
                 identifier += 1
 
     def reset(self):
+        application.init_keyboard()
         application.text.reset()
 
     def __next_state__(self):
         max_s = -1
-        for k, v in self.states.values():
+        for v in self.states.values():
             if v > max_s:
                 max_s = v
         return max_s + 1
 
     def state(self):
-        if self.keyboard not in self.states:
-            self.states[self.keyboard] = self.__next_state__()
-        return self.states[self.keyboard]
+        if application.keyboard.__hash__() not in self.states:
+            self.states[application.keyboard.__hash__()] = self.__next_state__()
+        return self.states[application.keyboard.__hash__()]
 
     def execute(self, action_id):
         def execute_wait(action):

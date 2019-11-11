@@ -1,9 +1,11 @@
+from .toggle_button_handler import ToggleButtonHandler
 from .value_append_handler import ValueAppendHandler
-from .one_time_keyboard_handler import OneTimeKeyboardHandler
+from .one_time_button_handler import OneTimeButtonHandler
 
 handlers = {
     'ValueAppendHandler': ValueAppendHandler,
-    'OneTimeKeyboardHandler': OneTimeKeyboardHandler
+    'OneTimeButtonHandler': OneTimeButtonHandler,
+    'ToggleButtonHandler': ToggleButtonHandler
 }
 
 

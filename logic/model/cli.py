@@ -44,8 +44,8 @@ class CLI:
             function = getattr(self, command)
         except AttributeError:
             return "Command not recognized"
-        try:
-            result = function(*args)
-            return str(result) if result else None
-        except TypeError:
-            return "Missing argument"
+        # try:
+        result = function(*args)
+        return str(result) if result else None
+        # except TypeError:
+        #     return "Missing argument"

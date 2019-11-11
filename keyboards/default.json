@@ -14,7 +14,8 @@
   "buttons": [
 
     {
-      "value": "tab",
+      "value": "\t",
+      "text": "tab",
       "row": 0,
       "width": 80
     },
@@ -73,9 +74,18 @@
     },
 
     {
-      "value": "caps lock",
+      "text": "caps lock",
       "row": 1,
-      "width": 85
+      "width": 85,
+      "handlers": {
+        "on_click": {
+          "name": "ToggleButtonHandler",
+          "args": {
+            "keyboard": "default",
+            "modifier": "UppercaseModifier"
+          }
+        }
+      }
     },
     {
       "value": "a",
@@ -122,9 +132,122 @@
       "row": 1
     },
     {
-      "value": "enter",
+      "text": "enter",
+      "value": "\n",
       "row": 1,
-      "width": 130
+      "width": 125
+    },
+
+    {
+      "text": "shift",
+      "row": 2,
+      "width": 130,
+      "handlers": {
+        "on_click": {
+          "name": "OneTimeButtonHandler",
+          "args": {
+            "keyboard": "default",
+            "modifier": "UppercaseModifier"
+          }
+        }
+      }
+    },
+    {
+      "value": "z",
+      "row": 2
+    },
+    {
+      "value": "x",
+      "row": 2
+    },
+    {
+      "value": "c",
+      "row": 2
+    },
+    {
+      "value": "v",
+      "row": 2
+    },
+    {
+      "value": "b",
+      "row": 2
+    },
+    {
+      "value": "n",
+      "row": 2
+    },
+    {
+      "value": "m",
+      "row": 2
+    },
+    {
+      "value": ",",
+      "row": 2
+    },
+    {
+      "value": ".",
+      "row": 2
+    },
+    {
+      "value": "/",
+      "row": 2
+    },
+    {
+      "text": "shift",
+      "row": 2,
+      "width": 130,
+      "handlers": {
+        "on_click": {
+          "name": "OneTimeButtonHandler",
+          "args": {
+            "keyboard": "default",
+            "modifier": "UppercaseModifier"
+          }
+        }
+      }
+    },
+
+    {
+      "text": "ctrl",
+      "row": 3,
+      "width": 70
+    },
+    {
+      "text": "fn",
+      "row": 3,
+      "width": 50
+    },
+    {
+      "text": "win",
+      "row": 3,
+      "width": 50
+    },
+    {
+      "text": "alt",
+      "row": 3,
+      "width": 50
+    },
+    {
+      "text": "space",
+      "value": " ",
+      "row": 3,
+      "width": 380
+    },
+    {
+      "text": "alt",
+      "row": 3,
+      "width": 50
+    },
+    {
+      "text": "fn",
+      "row": 3,
+      "width": 50
+    },
+    {
+      "text": "ctrl",
+      "row": 3,
+      "width": 60
     }
+
   ]
 }

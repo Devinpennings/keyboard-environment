@@ -25,10 +25,11 @@ class Keyboard(FloatLayout):
 
         def redraw():
             self.draw_keyboard()
-            self.draw_grid()
+            # self.draw_grid()
 
         application.bind(on_keyboard_change=redraw)
 
+    @mainthread
     def draw_keyboard(self):
         self.clear_widgets()
         for b in application.keyboard.buttons:
@@ -56,7 +57,6 @@ class Keyboard(FloatLayout):
     @mainthread
     def set_button_pos(self, button, widget):
         button.widget = widget
-        # widget.bind(on_click=button.click)
 
     def draw_grid(self):
         for cell in application.grid.cells:
@@ -82,7 +82,7 @@ class Keyboard(FloatLayout):
             cell.bind(on_highlight=highlight_cell)
 
             self.canvas.add(Line(
-                width=1.5,
+                width=1,
                 rectangle=(cell.rectangle.pos_x,
                            cell.rectangle.pos_y + (application.cli.height if application.cli else 0),
                            cell.rectangle.width,

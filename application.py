@@ -25,28 +25,28 @@ grid = Grid(config.KEYBOARD_WIDTH, config.KEYBOARD_HEIGHT, config.COLUMN_COUNT, 
 keyboard = None
 
 
+def set_keyboard(new):
+    global keyboard
+    keyboard = new
+    __events.on_keyboard_change()
+
+
 def init_keyboard():
     global keyboard
     if len(sys.argv) > 2:
         _file = open(f'{root_path}/keyboards/{sys.argv[2]}.json')
         _template = json.load(_file)
-        keyboard = Keyboard.from_template(_template)
+        set_keyboard(Keyboard.from_template(_template))
     else:
-        keyboard = Keyboard.from_symbols(config.KEYBOARD_WIDTH,
+        set_keyboard(Keyboard.from_symbols(config.KEYBOARD_WIDTH,
                                          config.KEYBOARD_HEIGHT,
                                          config.BUTTON_WIDTH,
                                          config.BUTTON_HEIGHT,
-                                         config.SYMBOLS)
+                                         config.SYMBOLS))
 
 
 init_keyboard()
 
-agent = Agent(keyboard, grid, config.ACTION_TYPES)
+agent = Agent(grid, config.ACTION_TYPES)
 cli = CLI(config.CLI_HEIGHT) if config.ENABLE_CLI else None
 text = Text()
-
-
-def set_keyboard(new):
-    global keyboard
-    keyboard = new
-    __events.on_keyboard_change()

@@ -1,3 +1,6 @@
+from events import Events
+from kivy.clock import mainthread
+
 from .keyboard_button import KeyboardButton
 from .rectangle import Rectangle
 from .button_handlers import get_handler
@@ -17,9 +20,10 @@ class Keyboard:
             props = bc['props'] if 'props' in bc else {}
             x = bc['x'] if 'x' in bc else row_widths[bc['row']] if 'row' in bc and bc['row'] in row_widths else 0
             y = bc['y'] if 'y' in bc else bc['row'] * 50 if 'row' in bc else 0
+            value = bc['value'] if 'value' in bc else ''
             text = bc['text'] if 'text' in bc else bc['value']
 
-            button = KeyboardButton(bc['value'], Rectangle(width, height, x, y), props, text)
+            button = KeyboardButton(value, Rectangle(width, height, x, y), props, text)
 
             if 'row' in bc:
                 if not bc['row'] in row_widths:
@@ -39,7 +43,8 @@ class Keyboard:
         return Keyboard(
             width=template['width'],
             height=template['height'],
-            buttons=buttons
+            buttons=buttons,
+            name=template['name'] if 'name' in template else None
         )
 
     @classmethod
@@ -47,10 +52,22 @@ class Keyboard:
         buttons = Keyboard.generate_buttons_from_symbols(width, button_width, button_height, symbols)
         return Keyboard(width, height, buttons)
 
-    def __init__(self, width, height, buttons):
+    def __init__(self, width, height, buttons, name=None):
         self.width = width
         self.height = height
         self.buttons = buttons
+        self.name = name
+        self.events = Events()
+
+        self.event_dict = {
+            'on_touch': self.events.on_touch,
+        }
+
+        def on_action(obj, action_type):
+            self.events.on_touch(obj, action_type)
+
+        for b in self.buttons:
+            b.bind(on_action=on_action)
 
     @staticmethod
     def generate_buttons_from_symbols(keyboard_width, button_width, button_height, symbols):
@@ -77,9 +94,20 @@ class Keyboard:
 
         return buttons
 
+    @mainthread
+    def bind(self, **kwargs):
+        for key, value in kwargs.items():
+            self.event_dict[key] += value
+
     def symbols(self):
         return list(map(lambda b: b.value, self.buttons))
 
     def get_button(self, x, y):
         matches = [b for b in self.buttons if b.intersects(x, y)]
         return matches[0] if len(matches) > 0 else None
+
+    def __hash__(self):
+        string = ""
+        for b in self.buttons:
+            string += b.value
+        return hash(string)

@@ -6,10 +6,10 @@ SYMBOLS = [
     '"', 'enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'
 ]
 
-COLUMN_COUNT = 12
-ROW_COUNT = 3
+COLUMN_COUNT = 24
+ROW_COUNT = 7
 
-KEYBOARD_WIDTH = 760
+KEYBOARD_WIDTH = 762
 KEYBOARD_HEIGHT = 200
 
 BUTTON_WIDTH = 50
