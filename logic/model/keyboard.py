@@ -100,7 +100,7 @@ class Keyboard:
             self.event_dict[key] += value
 
     def symbols(self):
-        return list(map(lambda b: b.value, self.buttons))
+        return [b.value for b in self.buttons if b.value]
 
     def get_button(self, x, y):
         matches = [b for b in self.buttons if b.intersects(x, y)]
