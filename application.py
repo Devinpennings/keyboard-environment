@@ -1,6 +1,7 @@
 import json
 import sys
 import os
+from pathlib import Path
 
 from events import Events
 
@@ -19,7 +20,7 @@ def bind(**kwargs):
         __event_dict[key] += value
 
 
-root_path = os.path.dirname(os.path.abspath(__file__))
+root_path = Path().absolute()
 grid = Grid(config.KEYBOARD_WIDTH, config.KEYBOARD_HEIGHT, config.COLUMN_COUNT, config.ROW_COUNT)
 
 keyboard = None
@@ -34,7 +35,7 @@ def set_keyboard(new):
 def init_keyboard():
     global keyboard
     if len(sys.argv) > 2:
-        _file = open(f'{root_path}/keyboards/{sys.argv[2]}.json')
+        _file = open(f'{config.KEYBOARD_PATH}/{config.KEYBOARD_NAME}.json')
         _template = json.load(_file)
         set_keyboard(Keyboard.from_template(_template))
     else:

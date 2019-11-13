@@ -21,7 +21,7 @@ class OneTimeButtonHandler(BaseButtonHandler):
 
     def load(self):
         from .. import Keyboard
-        file = open(f'{application.root_path}/keyboards/{self.keyboard_template}.json')
+        file = open(f'{application.config.KEYBOARD_PATH}/{self.keyboard_template}.json')
         template = json.load(file)
         new = Keyboard.from_template(template)
         if new.name == application.keyboard.name:
