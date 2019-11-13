@@ -25,7 +25,7 @@ class Keyboard(FloatLayout):
 
         def redraw():
             self.draw_keyboard()
-            # self.draw_grid()
+            self.draw_grid()
 
         application.bind(on_keyboard_change=redraw)
 

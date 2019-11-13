@@ -34,16 +34,9 @@ def set_keyboard(new):
 
 def init_keyboard():
     global keyboard
-    if len(sys.argv) > 2:
-        _file = open(f'{config.KEYBOARD_PATH}/{config.KEYBOARD_NAME}.json')
-        _template = json.load(_file)
-        set_keyboard(Keyboard.from_template(_template))
-    else:
-        set_keyboard(Keyboard.from_symbols(config.KEYBOARD_WIDTH,
-                                         config.KEYBOARD_HEIGHT,
-                                         config.BUTTON_WIDTH,
-                                         config.BUTTON_HEIGHT,
-                                         config.SYMBOLS))
+    _file = open(f'{config.KEYBOARD_PATH}/{config.KEYBOARD_NAME}.json')
+    _template = json.load(_file)
+    set_keyboard(Keyboard.from_template(_template))
 
 
 init_keyboard()
