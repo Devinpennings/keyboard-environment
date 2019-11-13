@@ -6,6 +6,9 @@ SYMBOLS = [
     '"', 'enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'
 ]
 
+KEYBOARD_PATH = '/home/devin/Documents/Semester 7/HERE/keyboard_environment/keyboards'
+KEYBOARD_NAME = "default"
+
 COLUMN_COUNT = 12
 ROW_COUNT = 3
 

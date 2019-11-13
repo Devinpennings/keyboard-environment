@@ -11,7 +11,7 @@ class OneTimeKeyboardHandler(BaseButtonHandler):
 
     def handle(self, obj, action):
         from .. import Keyboard
-        file = open(f'{application.root_path}/keyboards/{self.keyboard}.json')
+        file = open(f'{application.config.KEYBOARD_PATH}/{self.keyboard}.json')
         template = json.load(file)
 
         origin = application.keyboard
