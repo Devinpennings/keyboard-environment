@@ -58,6 +58,7 @@ class Keyboard(FloatLayout):
     def set_button_pos(self, button, widget):
         button.widget = widget
 
+    @mainthread
     def draw_grid(self):
         for cell in application.grid.cells:
 
