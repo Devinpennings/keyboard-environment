@@ -17,6 +17,8 @@ class Keyboard(FloatLayout):
     def __init__(self):
         super().__init__()
         self.draw_keyboard()
+        self.keyboard_dict = {}
+        self.active_keyboard = None
 
         with self.canvas.before:
             Color(1, 1, 1)
@@ -31,28 +33,42 @@ class Keyboard(FloatLayout):
 
     @mainthread
     def draw_keyboard(self):
-        self.clear_widgets()
-        for b in application.keyboard.buttons:
-            max_y = application.grid.height - b.rectangle.height
-            button = Button(
-                text=b.text,
-                width=b.rectangle.width,
-                height=b.rectangle.height,
-                size_hint=(None, None),
-                pos=(b.rectangle.pos_x,
-                     max_y - b.rectangle.pos_y + (
-                         application.cli.height if application.cli else 0)),
-                **b.props
-            )
-            button.bind(on_press=self.on_button_press)
+        # self.clear_widgets()
+        self.active_keyboard = application.keyboard
 
-            def handle_action(button_to_press, action_type):
-                button_to_press.widget.trigger_action(duration=action_type.duration)
+        for b in [item for sublist in [v for k, v in self.keyboard_dict.items() if k.__hash__() is not self.active_keyboard.__hash__()] for item in sublist]:
+            b.opacity = 0
 
-            b.bind(on_action=handle_action)
+        if self.active_keyboard not in self.keyboard_dict:
+            print('rendering')
+            self.keyboard_dict[self.active_keyboard.__hash__()] = []
 
-            self.add_widget(button)
-            self.set_button_pos(b, button)
+            for b in application.keyboard.buttons:
+                max_y = application.grid.height - b.rectangle.height
+                button = Button(
+                    text=b.text,
+                    width=b.rectangle.width,
+                    height=b.rectangle.height,
+                    size_hint=(None, None),
+                    pos=(b.rectangle.pos_x,
+                         max_y - b.rectangle.pos_y + (
+                             application.cli.height if application.cli else 0)),
+                    **b.props
+                )
+                button.bind(on_press=self.on_button_press)
+
+                def handle_action(button_to_press, action_type):
+                    button_to_press.widget.trigger_action(duration=action_type.duration)
+
+                b.bind(on_action=handle_action)
+
+                self.add_widget(button)
+                self.set_button_pos(b, button)
+                self.keyboard_dict[self.active_keyboard.__hash__()].append(button)
+
+        else:
+            for b in self.keyboard_dict[self.active_keyboard.__hash__()]:
+                b.opacity = 1
 
     @mainthread
     def set_button_pos(self, button, widget):
