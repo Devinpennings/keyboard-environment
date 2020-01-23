@@ -6,9 +6,20 @@ from .application_mode import ApplicationMode
 
 
 def start_api_demo():
-    print(application.agent.execute(0))
-    print(application.agent.execute(24))
-    print(application.agent.execute(3))
+    from threading import Thread
+
+    def run():
+        from .ui.interface import Interface
+        i = Interface()
+        i.run()
+
+    t = Thread(target=run)
+    t.start()
+
+    import time
+    time.sleep(2)
+
+    application.agent.start_demo()
 
 
 def start_api():

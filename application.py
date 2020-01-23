@@ -1,6 +1,4 @@
 import json
-import sys
-import os
 from pathlib import Path
 
 from events import Events
@@ -34,9 +32,12 @@ def set_keyboard(new):
 
 def init_keyboard():
     global keyboard
-    _file = open(f'{config.KEYBOARD_PATH}/{config.KEYBOARD_NAME}.json')
-    _template = json.load(_file)
-    set_keyboard(Keyboard.from_template(_template))
+    try:
+        _file = open(f'{config.KEYBOARD_PATH}/{config.KEYBOARD_NAME}.json')
+        _template = json.load(_file)
+        set_keyboard(Keyboard.from_template(_template))
+    except FileNotFoundError:
+        set_keyboard(Keyboard.from_symbols(config.KEYBOARD_WIDTH, config.KEYBOARD_HEIGHT, config.BUTTON_WIDTH, config.BUTTON_HEIGHT, config.SYMBOLS))
 
 
 init_keyboard()

@@ -43,6 +43,12 @@ class Agent:
             self.states[application.keyboard.__hash__()] = self.__next_state__()
         return self.states[application.keyboard.__hash__()]
 
+    def start_demo(self):
+        for a in self.actions:
+            print(self.execute(a.identifier))
+            import time
+            time.sleep(0.5)
+
     def execute(self, action_id):
         def execute_wait(action):
             action.execute()

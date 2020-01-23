@@ -40,7 +40,6 @@ class Keyboard(FloatLayout):
             b.opacity = 0
 
         if self.active_keyboard not in self.keyboard_dict:
-            print('rendering')
             self.keyboard_dict[self.active_keyboard.__hash__()] = []
 
             for b in application.keyboard.buttons:
