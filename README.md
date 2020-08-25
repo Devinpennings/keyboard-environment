@@ -1,6 +1,6 @@
 
 Keyboard environment
-The keyboard environment is used to simulate different keyboard. The environment is developed with the goal of functioning as reinforcement learning environment.
+The keyboard environment is used to simulate different keyboards. The environment is developed with the goal of functioning as reinforcement learning environment.
 Therefore, actions and results are accessible from the outside API. The environmen can function as standalone API, standalone interface, or a combination of both. 
 
 ## Installation
